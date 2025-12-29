@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coral Reef Monitor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Coral Reef Health Predictor</h1>
+        <form action="/predict" method="post">
+            <label for="temperature">Current Ocean Temperature (°C):</label>
+            <input type="number" id="temperature" name="temperature" step="0.01" required>
+            <br><br>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location">
+            <br><br>
+            <label for="coral_type">Coral Type:</label>
+            <input type="text" id="coral_type" name="coral_type">
+            <br><br>
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction %}
+            <h2>Prediction Result:</h2>
+            <p>{{ prediction }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
